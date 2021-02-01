@@ -3,8 +3,8 @@ const baseURL = 'http://localhost:8000';
 const weatherBaseURL = 'https://api.openweathermap.org/data/2.5/';
 const apiKey = '84b9f88850da73d87b3bc5ddb1cd1f86';
 
-const d = new Date();
-const newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+const newDate = new Date();
+new Date(newDate.getFullYear(), newDate.getMonth() + 1, 0, 23, 59, 59);
 
 document.getElementById('generate').addEventListener('click', handleGenerateClick);
 
