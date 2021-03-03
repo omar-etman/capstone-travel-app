@@ -1,10 +1,10 @@
 let temperature;
-let baseURL = 'http://localhost:8000';
-let weatherBaseURL = 'https://api.openweathermap.org/data/2.5/';
-let apiKey = '84b9f88850da73d87b3bc5ddb1cd1f86';
+const baseURL = 'http://localhost:8000';
+const weatherBaseURL = 'https://api.openweathermap.org/data/2.5/';
+const apiKey = '84b9f88850da73d87b3bc5ddb1cd1f86';
 
-let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+const newDate = new Date();
+new Date(newDate.getFullYear(), newDate.getMonth() + 1, 0, 23, 59, 59);
 
 document.getElementById('generate').addEventListener('click', handleGenerateClick);
 
@@ -20,20 +20,18 @@ function handleGenerateClick(e){
         postUserData(payLoad)
         .then(()=>{
             retrieveInputData()
-            .then(data=>{
-                let entry = data[0];
-                document.getElementById('temp').innerHTML = entry.temperature;
-                document.getElementById('content').innerHTML = entry.userInput;
-                document.getElementById('date').innerHTML = entry.date;
-                
-            })
         })
     })
     
 };
-
+function updateUi (data) {
+    console.log(data);
+    document.getElementById('temp').innerHTML = data.temperature;
+    document.getElementById('content').innerHTML = data.userInput;
+    document.getElementById('date').innerHTML = data.date;
+};
 const getWeather = async (zip)=>{
-    const compoundURL = `${weatherBaseURL}weather?zip=${zip}&appid=${apiKey}`;
+    const compoundURL = `${weatherBaseURL}weather?zip=${zip}&appid=${apiKey}&units=metric`;
     const res = await fetch(compoundURL);
 
     try {
@@ -68,7 +66,7 @@ const retrieveInputData = async ()=>{
 
     try {
         const data = await res.json();
-        return data;
+        updateUi(data);
     }catch(error) {
         console.log('error',error);
     }

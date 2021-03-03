@@ -1,4 +1,4 @@
-let projectData = [];
+let projectData = {};
 
 const express = require('express');
 
@@ -32,7 +32,6 @@ function callBack(req,res){
 app.post('/user/input', addUserEntry);
 
 function addUserEntry (req,res){
-    projectData = []
-    projectData.push(req.body);
+    projectData = Object.assign({},req.body);
     res.send('success');
 };
