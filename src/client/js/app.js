@@ -10,6 +10,7 @@ document.getElementById('generate').addEventListener('click', handleGenerateClic
 
 function handleGenerateClick(e){
     let zip = document.getElementById('zip').value;
+    debugger
     getWeather(zip)
     .then(data=>{
         const payLoad = {
