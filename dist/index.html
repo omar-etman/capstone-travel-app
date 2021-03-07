@@ -6,10 +6,10 @@
 <link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.scss">
 <link href="main.css" rel="stylesheet"></head>
- <body>
+ <!-- /*<body>
 <div id = "app">
   <div class ="holder headline">
-    Weather Journal App
+    thumb wing
   </div>
   <div class ="holder zip">
     <label for="zip">Enter Zipcode here</label>
@@ -31,5 +31,31 @@
   </div>
 <script src="app.js" type="text/javascript"></script>
 
-<script type="text/javascript" src="main.js"></script></body>
+<script type="text/javascript" src="main.js"></script></body> -->
+<body>
+  <div id="app">
+    <div class = "holder headline">
+
+    <div class = "holder entry">
+      <div class = "image"></div>
+      <div class = "destination__name"></div>
+      <div class = "destination__weather"></div>
+      <div class = "destination__distance"></div>
+    </div>
+
+    <div class = "holder destination">
+      <label for="destination">where to?</label>
+        <textarea class= "myInput" id="destination" placeholder="Enter your destination" rows="9" cols="50"></textarea>
+    </div>
+
+    <div class = "holder flight__time">
+      <label for="flight__time">time to fly?</label>
+      <input type="text" id="flight__time" placeholder="when will you be taking your flight">
+    </div>
+
+    <button id="generate" type = "submit"> take off </button>
+    
+  </div>
+  <script src="app.js" type="text/javascript"></script>
+</body>
 </html>
