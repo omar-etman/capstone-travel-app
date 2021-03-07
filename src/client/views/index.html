@@ -42,13 +42,20 @@
       <div class = "destination__weather"></div>
       <div class = "destination__distance"></div>
     </div>
-    <div class = "destination"></div>
-    <div class = "flight__time"></div>
-    <div class = "button"></div>
-    
 
+    <div class = "destination">
+      <label for="destination">where to?</label>
+        <textarea class= "myInput" id="destination" placeholder="Enter your destination" rows="9" cols="50"></textarea>
+    </div>
+
+    <div class = "flight__time">
+      <label for="flight__time">time to fly?</label>
+      <input type="text" id="flight__time" placeholder="when will you be taking your flight">
+    </div>
+
+    <button id="generate" type = "submit"> Generate </button>
+    
   </div>
   <script src="app.js" type="text/javascript"></script>
-
 </body>
 </html>
