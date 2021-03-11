@@ -1,28 +1,29 @@
 body{
     background: #090d0f;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    // height:100vh;
+    height:100vh;
     border: 5px solid green;
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
+    // display: flex;
+    // flex-flow: column wrap;
+    // align-items: center;
     padding: 1rem;
+    background-color: red; /* For browsers that do not support gradients */
+    background-image: linear-gradient(to bottom right, rgb(16, 44, 77), rgb(26, 102, 189), rgb(137, 189, 219));
 }
 
 #app{
-    display: flex;
-    flex-flow: column wrap;
-    /* grid-template-columns:  */
-    // height:100vh;
-    background: #1b262c;
+    height: 100%;
+    // background: #1b262c;
     color: #99dbfc;
-    align-items: center;
-    // grid-gap: 1em;
     font-size: 20px;
-    font-family: 'Oswald', sans-serif;
-    border: 5px dotted greenyellow;
+    font-family: Oswald,sans-serif;
+    border: 5px dotted #adff2f;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 header{
@@ -104,16 +105,19 @@ input{
 }
 
 button{
-    width: 200px;
-    height: 70px;
+    // width: 200px;
+    // height: 70px;
     background: #3b4a6b;
     color: #f0d43a;
     font-size: 26px;
     font-family: 'Oswald', sans-serif;
     border: none;
     margin: 1rem;
-    align-items: center;
+    // align-items: center;
+    text-align: center;
+    padding: 25px 50px 25px 50px;
 }
+
 // h1{
 //     font-size: 36px;
 // }
@@ -133,19 +137,19 @@ button:focus {
 }
 /* Style for Placeholder Text*/
 ::placeholder { /* Firefox, Chrome, Opera */ 
-    color: #f0d43a; 
+    color: #ffffff; 
     font-family: 'Oswald', sans-serif;
 
 } 
   
 :-ms-input-placeholder { /* Internet Explorer 10-11 */ 
-    color: #f0d43a; 
+    color: #ffffff; 
     font-family: 'Oswald', sans-serif;
 
 } 
   
 ::-ms-input-placeholder { /* Microsoft Edge */ 
-    color: #f0d43a; 
+    color: #ffffff; 
     font-family: 'Oswald', sans-serif;
 
 } 
