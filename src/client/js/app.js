@@ -105,5 +105,6 @@ function decideInterval() {
 }
 export {
     handleGenerateClick, 
-    updateUserParameters
+    updateUserParameters,
+    updateUi
 }
