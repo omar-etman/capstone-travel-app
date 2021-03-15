@@ -1,33 +1,32 @@
 body{
+    min-height: 100vh;
     background: #090d0f;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    height:100vh;
-    border: 5px solid green;
-    // display: flex;
-    // flex-flow: column wrap;
-    // align-items: center;
     padding: 1rem;
     background-color: red; /* For browsers that do not support gradients */
     background-image: linear-gradient(to bottom right, rgb(16, 44, 77), rgb(26, 102, 189), rgb(137, 189, 219));
 }
 
 #app{
-    height: 100%;
-    // background: #1b262c;
+    min-height: 100vh;
     color: #99dbfc;
-    font-size: 20px;
+    font-size: 3rem;
     font-family: Oswald,sans-serif;
-    border: 5px dotted #adff2f;
     margin: 0;
     padding: 0;
     display: flex;
-    flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
 }
 
+.container {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+
 header{
-    border: 3px dotted red;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -44,82 +43,61 @@ header{
 
 .entry{
     background: rgba(59, 73, 104, 0.4);
-}
-
-.destination{
-    border: 3px dotted yellow;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    
+    .image {
+        width: 50%;
+        margin: 2rem 0;
+    }
 }
 
 .title{
-    font-size: 60px;
+    font-size: 6rem;
     justify-content: center;
     align-items: center;
-    border: 3px dashed lightblue;
 }
 
 .sub__title{
     justify-content: center;
     align-items: center;
-    border: 3px dashed lightblue;
 }
-
-// #entryHolder{
-
-// }
-
-// #date{
-
-// }
-
-// #temp{
-
-// }
-
-// #content{
-
-// }
-
-// .headline {
-
-// }
-// .title{
-
-// }
 
 /*  Basic Styling To Override Default For Basic HTML Elements */
 label{
     display:block;
-    font-size: 27px;
+    font-size: 2.5rem;
     text-align: center;
 }
 
 input{
     display:block;
-    height: 60px;
     width: 320px;
     background:#22b2da;
     color: #f0d43a;
-    font-size: 20px;
+    font-size: 2.3rem;
     font-family: 'Oswald', sans-serif;
     border: none;
-    padding: 0 10px;
+    padding: 10px;
+    margin-bottom: 3rem;
+    margin-top: 1.5rem;
 }
 
 button{
-    // width: 200px;
-    // height: 70px;
     background: #3b4a6b;
     color: #f0d43a;
-    font-size: 26px;
+    font-size: 2.3rem;
     font-family: 'Oswald', sans-serif;
     border: none;
     margin: 1rem;
-    // align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 25px 50px 25px 50px;
+    padding: 1.5rem 1rem;
     &:hover {
-        background:rgb(137, 189, 219);
-        color: #f0d43a;
+        color:#3b4a6b;
+        background: #f0d43a;
     }
 }
 
@@ -130,7 +108,7 @@ button{
 textarea{
     background:#22b2da;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 1rem;
     font-family: 'Oswald', sans-serif;
 }
 /* Reset style for HTML element on active to have no border*/

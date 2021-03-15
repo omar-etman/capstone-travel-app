@@ -8,46 +8,48 @@
 </head>
 <body>
   <div id="app">
-    <header>
-      <div class="title">Thumb Wing</div>
-      <div class="sub__title">travel with courage ... do it with knowledge</div>
-    </header>
-
-    <div class = "holder entry">
-      <img class = "image"/>
-      <div class = "destination__name"></div>
-      <div class = "destination__weather"></div>
-      <div class = "destination__distance"></div>
-    </div>
-
-      <div class = "holder destination">
-        <label for="destination">where to?</label>
-          <input 
-            id="city"
-            class= "myInput" 
-            placeholder="Enter your destination" 
+    <div class="container">
+      <header>
+        <div class="title">Thumb Wing</div>
+        <div class="sub__title">travel with courage ... do it with knowledge</div>
+      </header>
+  
+      <div class = "holder entry">
+        <img class = "image"/>
+        <div class = "destination__name"></div>
+        <div class = "destination__weather"></div>
+        <div class = "destination__distance"></div>
+      </div>
+  
+        <div class = "holder destination">
+          <label for="destination">where to?</label>
+            <input 
+              id="city"
+              class= "myInput" 
+              placeholder="Enter your destination" 
+              value="" 
+              oninput="Client.updateUserParameters('city')"
+            />
+        </div>
+    
+        <div class = "holder flight__time">
+          <label for="flight__time">time to fly?</label>
+          <input
+            id="date" 
+            type="date"  
+            placeholder="when will you be taking your flight" 
             value="" 
-            oninput="Client.updateUserParameters('city')"
+            oninput="Client.updateUserParameters('date')"
           />
-      </div>
-  
-      <div class = "holder flight__time">
-        <label for="flight__time">time to fly?</label>
-        <input
-          id="date" 
-          type="date"  
-          placeholder="when will you be taking your flight" 
-          value="" 
-          oninput="Client.updateUserParameters('date')"
-        />
-      </div>
-  
-      <button 
-        id="generate" 
-        type="submit" 
-        onclick="return Client.handleGenerateClick(event)"> 
-        take off 
-      </button>
+        </div>
+    
+        <button 
+          id="generate" 
+          type="submit" 
+          onclick="return Client.handleGenerateClick(event)"> 
+          take off 
+        </button>
+    </div>
     
   </div>
 </body>

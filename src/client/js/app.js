@@ -33,7 +33,7 @@ function handleGenerateClick(e){
             updateParams('description', data.data[0].weather.description);
             getImage()
             .then(data => {
-                updateParams('imageUrl', data.hits[0].previewURL);
+                updateParams('imageUrl', data.hits[0].largeImageURL);
                 updateUi();
             })
         })
