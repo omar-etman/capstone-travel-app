@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Weather Journal</title>
+<title>Thumb Wing travel app</title>
 <link type="text/css" href="../styles/style.scss">
 <link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
 </head>
@@ -56,5 +56,14 @@
         </button>
     </div>
   </div>
+  <script>
+    // Check that service workers are supported
+    if ('serviceWorker' in navigator) {
+    // Use the window load event to keep the page load performant
+    window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js');
+    });
+    }
+    </script>
 </body>
 </html>
