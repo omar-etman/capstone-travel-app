@@ -35,6 +35,7 @@ function handleGenerateClick(e){
             .then(data => {
                 updateParams('imageUrl', data.hits[0].largeImageURL);
                 updateUi();
+                setCountDown();
             })
         })
     })
@@ -103,6 +104,18 @@ function decideInterval() {
 
     return dateDiff <=7 ? 'current' : 'forecast/daily';
 }
+
+function setCountDown() {
+    const countdown = document.querySelector('.countdown');
+    const counter = document.querySelector('.countdown__time');
+    countdown.classList.add('countdown--show');
+
+    setInterval(() => {
+        let diff = new Date(parameters.date).getTime() - (new Date()).getTime();
+        counter.innerHTML = `${parseInt(diff/(1000*60*60))} hours ${parseInt(diff/(1000*60))} minutes  ${parseInt(diff/(1000))} seconds!`;
+    }, 1000)
+}
+
 export {
     handleGenerateClick, 
     updateUserParameters,
