@@ -22,7 +22,7 @@ body{
     padding: 0;
     display: flex;
     flex-flow: column nowrap;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
 }
 
@@ -102,6 +102,7 @@ input{
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
     border: none;
+    padding: 0 10px;
 }
 
 button{
@@ -116,6 +117,10 @@ button{
     // align-items: center;
     text-align: center;
     padding: 25px 50px 25px 50px;
+    &:hover {
+        background:rgb(137, 189, 219);
+        color: #f0d43a;
+    }
 }
 
 // h1{

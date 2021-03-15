@@ -1,40 +1,50 @@
 let temperature;
+const userName = 'omaretman';
 const baseURL = 'http://localhost:8000';
-const weatherBaseURL = 'https://api.openweathermap.org/data/2.5/';
+const weatherBitBaseURL="https://api.weatherbit.io/v2.0/";
+const pixabayBaseURL="https://pixabay.com/api";
+const geonameBaseURL = `http://api.geonames.org/searchJSON?username=${userName}`;
+const weatherBitAPIKey="369817f75d864de791f3fc5ac49b2401";
 const apiKey = '84b9f88850da73d87b3bc5ddb1cd1f86';
+const pixabayKey="20682480-a1c42c7e1315b40f267c2b45f";
+const parameters = {
+    date: new Date(),
+    city: '',
+    lng: null,
+    lat: null, 
+    description: '',
+    country: '',
+    imageUrl: 'https://via.placeholder.com/150'
+};
 
-const newDate = new Date();
-new Date(newDate.getFullYear(), newDate.getMonth() + 1, 0, 23, 59, 59);
-
-document.getElementById('generate').addEventListener('click', handleGenerateClick);
-
+// Main function
 function handleGenerateClick(e){
-    let zip = document.getElementById('zip').value;
-    debugger
-    getWeather(zip)
+    e.preventDefault();
+    getLocationInfo(parameters.city)
     .then(data=>{
-        const payLoad = {
-            temperature: data.main.temp,
-            date: newDate,
-            userInput: document.getElementById('feelings').value
-        };
-        postUserData(payLoad)
-        .then(()=>{
-            retrieveInputData()
+        const {lat, lng, countryName, countryCode} = data.geonames[0];
+
+        updateParams('lat', lat);
+        updateParams('lng', lng);
+        updateParams('countryCode', countryCode);
+         
+        getWeatherInfo()
+        .then(data => {
+            updateParams('description', data.data[0].weather.description);
+            getImage()
+            .then(data => {
+                updateParams('imageUrl', data.hits[0].previewURL);
+                updateUi();
+            })
         })
     })
     
 };
-function updateUi (data) {
-    console.log(data);
-    document.getElementById('temp').innerHTML = data.temperature;
-    document.getElementById('content').innerHTML = data.userInput;
-    document.getElementById('date').innerHTML = data.date;
-};
-const getWeather = async (zip)=>{
-    const compoundURL = `${weatherBaseURL}weather?zip=${zip}&appid=${apiKey}&units=metric`;
-    const res = await fetch(compoundURL);
 
+const getImage = async ()=>{
+    formatCityName();
+    const compoundURL = `${pixabayBaseURL}?q=${parameters.city}&key=${pixabayKey}`;
+    const res = await fetch(compoundURL);
     try {
         const data = await res.json();
         return data;
@@ -43,32 +53,57 @@ const getWeather = async (zip)=>{
     }
 }
 
-const postUserData = async (payLoad)=>{
-    const URL = `${baseURL}/user/input`;
-    const res = await fetch(URL, {
-        method: 'POST', 
-        credentials: 'same-origin', 
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payLoad), 
-      });
-      try {
+function updateUi () {
+    reverseFormatCityName();
+    document.querySelector('.image').src = parameters.imageUrl;
+    document.querySelector('.destination__name').innerHTML = `${parameters.city}, ${parameters.countryCode}`;
+    document.querySelector('.destination__weather').innerHTML = parameters.description;
+};
+const getLocationInfo = async ()=>{
+    const compoundURL = `${geonameBaseURL}&q=${parameters.city}&maxRows=1`;
+    const res = await fetch(compoundURL);
+    try {
         const data = await res.json();
         return data;
     }catch(error) {
         console.log('error',error);
     }
-};
+}
 
-const retrieveInputData = async ()=>{
-    const URL = `${baseURL}/all`;
-    const res = await fetch(URL);
-
+const getWeatherInfo = async ()=>{
+    const compoundURL = `${weatherBitBaseURL}${decideInterval()}?lat=${parameters.lat}&lon=${parameters.lng}&key=${weatherBitAPIKey}`;
+    const res = await fetch(compoundURL);
     try {
         const data = await res.json();
-        updateUi(data);
+        return data;
     }catch(error) {
         console.log('error',error);
     }
+}
+
+// Helper functions
+function formatCityName() {
+    parameters.city = parameters.city.replace(' ', '+');
+}
+
+function reverseFormatCityName() {
+    parameters.city = parameters.city.replace('+', ', ');
+}
+
+function updateUserParameters(param) {
+    parameters[param] = document.getElementById(param).value;
+}
+
+function updateParams(param, value) {
+    parameters[param] = value;
+}
+function decideInterval() {
+    const date = parameters.date;
+    const dateDiff = (new Date(date).getTime() - new Date().getTime())/ (1000*60*60*24);
+
+    return dateDiff <=7 ? 'current' : 'forecast/daily';
+}
+export {
+    handleGenerateClick, 
+    updateUserParameters
 }

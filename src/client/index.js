@@ -1,2 +1,8 @@
 import './styles/style.scss'
-import './js/app.js'
+import {handleGenerateClick, updateUserParameters} from  './js/app.js';
+
+
+export {
+    handleGenerateClick, 
+    updateUserParameters
+   }
